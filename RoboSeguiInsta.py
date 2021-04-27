@@ -65,8 +65,8 @@ elif opcao == '2':
         #Clicando no botao de login   
         driver.find_element_by_css_selector("button[type='button']").click()
         #Digitando Login e senha 
-        driver.find_element_by_css_selector("input[name='username']").send_keys('hermanos_acessorios')
-        driver.find_element_by_css_selector("input[name='password']").send_keys('Quiksilver2@')
+        driver.find_element_by_css_selector("input[name='username']").send_keys('')
+        driver.find_element_by_css_selector("input[name='password']").send_keys('')
         #Clicando no botao logar
         driver.find_element_by_css_selector("button[type='submit']").click()
         sleep(5)
