@@ -11,10 +11,10 @@ def main():
     os.system('cls') or None #Limpa Tela
     print('**************************************')
     print('*****  Robo Ganhe Seguidores :) ******')
-    print('**************************************')
+    print('**************************************\n')
     print('*************  MENU  *****************')
     print('\nSelecione uma opção\n')
-    print('1- Seguir Seguidores de um Perfil2')
+    print('1- Seguir Seguidores de um Perfil')
     print('2- Deixar De Seguir\n')
 
     opcao = str(input('R: '))
@@ -74,7 +74,20 @@ def main():
             except WebDriverException as Erro:
                 os.system('cls') or None
                 print("Ocorreu Um Erro: \n\n{}".format(Erro))
-                print('Processo Finalizado.\n\n{} Perfis Seguidos\n'.format(contador))
+        
+        driver.close()
+        os.system('cls') or None  
+        print('****************************************************')    
+        print('*           Fim do Processo (Seguir Perfis)        *')
+        print('****************************************************')
+        print('****************      Meta: {} Perfis **************'.format(seguir))
+        print('**************** Alcançado: {} Perfis **************'.format(contador))
+        print('****************************************************')
+        print('****************************************************\n')
+        
+        resposta =input('\nVocê Deseja Voltar Para o Menu Inicial?\n\n1-Sim\n2-Não\n\n')
+        if resposta == '1':
+            main()
 
     elif opcao == '2':
         contador=0
@@ -129,11 +142,25 @@ def main():
                     driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
                     contador+=1
                 
-                print('Processo Finalizado\n\nVocê Deixou de Seguir {} Perfis'.format(contador))
+               
         except WebDriverException as Erro:
             os.system('cls') or None
             print('Ocorreu Um Erro no Processo:\n\n{}'.format(Erro))
-            print('\nVocê Deixou de Seguir {} perfis\n'.format(contador))
+
+        driver.close()
+        os.system('cls') or None    
+        print('****************************************************')  
+        print('*      Fim do Processo (Deixar de Segui Perfis)    *')
+        print('****************************************************')
+        print('****************      Meta: {} Perfis **************'.format(seguir))
+        print('**************** Alcançado: {} Perfis **************'.format(contador))
+        print('****************************************************')
+        print('****************************************************\n\n')
+        
+        resposta =input('\nVocê Deseja Voltar Para o Menu Inicial?\n\n1-Sim\n2-Não\n\n')
+        if resposta == '1':
+            main()
+
 
     elif opcao != '1' or opcao != '2':
             print('Valor Invalido')
