@@ -25,10 +25,12 @@ if opcao =='1':
     for i in range(len(links)):
             driver = webdriver.Chrome(executable_path="C:\Projetos\RoboSeguiInsta\webdriver\chromedriver.exe")
             driver.get(links[i])
-        
-            #Clicando no botao de login   
+            sleep(3)
+
+            #Clicando no botao de login
             driver.find_element_by_css_selector("button[type='button']").click()
-            #Digitando Login e senha 
+            sleep(1)
+            #Digitando Login e senha
             driver.find_element_by_css_selector("input[name='username']").send_keys('hermanos_acessorios')
             driver.find_element_by_css_selector("input[name='password']").send_keys('Quiksilver2@')
             #Clicando no botao logar
@@ -41,15 +43,18 @@ if opcao =='1':
             driver.find_element_by_xpath("//a[text()=' seguidores']").click()
 
             try:
-               for j in seguir:
-                    for i in range(5):
-                        sleep(3)
-                        #Clicando em Seguir
-                        valor= driver.find_element_by_xpath("//button[text()='Seguir']").click()
-                    sleep(60)
+                contador = 0
+                for i in range(seguir):
+                    sleep(3)
+                    driver.find_element_by_xpath("//button[text()='Seguir']").click()
+
+                    contador +=1
+                    if contador ==5:
+                        contador=0
+                        sleep(60)
 
             except:
-                print("erro")
+                print("Erro:")
 
 elif opcao == '2':
 
@@ -60,11 +65,12 @@ elif opcao == '2':
     for i in range(len(links)):
         driver = webdriver.Chrome(executable_path="C:\Projetos\RoboSeguiInsta\webdriver\chromedriver.exe")
         driver.get(links[i])
-        
         sleep(3)
-        #Clicando no botao de login   
+
+        #Clicando no botao de login
         driver.find_element_by_css_selector("button[type='button']").click()
-        #Digitando Login e senha 
+        sleep(1)
+        #Digitando Login e senha
         driver.find_element_by_css_selector("input[name='username']").send_keys('hermanos_acessorios')
         driver.find_element_by_css_selector("input[name='password']").send_keys('Quiksilver2@')
         #Clicando no botao logar
@@ -81,6 +87,6 @@ elif opcao == '2':
             driver.find_element_by_xpath("//button[text()='Seguindo']").click()
             sleep(2)
             driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
-                
+
 elif opcao != '1' or opcao != '2':
     print('Valor Invalido')
