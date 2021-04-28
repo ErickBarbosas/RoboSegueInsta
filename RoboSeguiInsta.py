@@ -29,10 +29,16 @@ if opcao =='1':
 
             #Clicando no botao de login
             driver.find_element_by_css_selector("button[type='button']").click()
+<<<<<<< HEAD
             sleep(1)
             #Digitando Login e senha
             driver.find_element_by_css_selector("input[name='username']").send_keys('hermanos_acessorios')
             driver.find_element_by_css_selector("input[name='password']").send_keys('Quiksilver2@')
+=======
+            #Digitando Login e senha 
+            driver.find_element_by_css_selector("input[name='username']").send_keys('')
+            driver.find_element_by_css_selector("input[name='password']").send_keys('')
+>>>>>>> c5e7307327b937047cac89613f075eb542d2e360
             #Clicando no botao logar
             driver.find_element_by_css_selector("button[type='submit']").click()
             sleep(5)
@@ -69,10 +75,16 @@ elif opcao == '2':
 
         #Clicando no botao de login
         driver.find_element_by_css_selector("button[type='button']").click()
+<<<<<<< HEAD
         sleep(1)
         #Digitando Login e senha
         driver.find_element_by_css_selector("input[name='username']").send_keys('hermanos_acessorios')
         driver.find_element_by_css_selector("input[name='password']").send_keys('Quiksilver2@')
+=======
+        #Digitando Login e senha 
+        driver.find_element_by_css_selector("input[name='username']").send_keys('')
+        driver.find_element_by_css_selector("input[name='password']").send_keys('')
+>>>>>>> c5e7307327b937047cac89613f075eb542d2e360
         #Clicando no botao logar
         driver.find_element_by_css_selector("button[type='submit']").click()
         sleep(5)
