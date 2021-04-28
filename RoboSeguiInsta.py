@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.common.exceptions import WebDriverException
 import os
 from time import sleep
 
@@ -11,15 +12,16 @@ def main():
     print('**************************************')
     print('*****  Robo Ganhe Seguidores :) ******')
     print('**************************************')
-    print('               MENU                   ')
-    print('\nSelecione uma opção')
-    print('1- Seguir Seguidores de um Perfil')
-    print('2- Deixar De Seguir')
+    print('*************  MENU  *****************')
+    print('\nSelecione uma opção\n')
+    print('1- Seguir Seguidores de um Perfil2')
+    print('2- Deixar De Seguir\n')
 
     opcao = str(input('R: '))
 
     if opcao =='1':
-    
+        
+        contador = 0
         os.system('cls') or None #Limpa Tela 
 
         #Digite o link da pagina que deseja seguir os seguidores
@@ -58,22 +60,26 @@ def main():
             driver.find_element_by_xpath("//a[text()=' seguidores']").click()
 
             try:
-                contador = 0
+                j = 0
                 for i in range(seguir):
                     sleep(3)
                     driver.find_element_by_xpath("//button[text()='Seguir']").click()
 
-                    contador +=1
-                if contador ==5:
-                    contador=0
-                    sleep(60)
+                    contador+=1
+                    j +=1
+                if j ==5:
+                    j=0
+                    sleep(70)
 
-            except:
-                print("Erro:")
+            except WebDriverException as Erro:
+                os.system('cls') or None
+                print("Ocorreu Um Erro: \n\n{}".format(Erro))
+                print('Processo Finalizado.\n\n{} Perfis Seguidos\n'.format(contador))
+
     elif opcao == '2':
-
+        contador=0
+        try:  
             
-
             #Digite o link da pagina que deseja seguir os seguidores
             os.system('cls') or None #Limpa Tela 
             perfis= str(input('Digite os Links do Perfil (Separados Por ;):\n'))
@@ -83,6 +89,7 @@ def main():
             seguir=int(input('Digite Quantos Perfil Você Deseja Deixar de Seguir: \n'))
         
             #login do Instagram
+            os.system('cls') or None #Limpa Tela 
             login=str(input('Digite seu Login: '))
             #Senha Do perfil
             senha=str(input('Digite a Senha do Perfil: '))
@@ -116,10 +123,17 @@ def main():
 
                 #Deixando de segui Usuario
                 for j in range(seguir):
-                    sleep(3)
+                    sleep(5)
                     driver.find_element_by_xpath("//button[text()='Seguindo']").click()
-                    sleep(2)
+                    sleep(10)
                     driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
+                    contador+=1
+                
+                print('Processo Finalizado\n\nVocê Deixou de Seguir {} Perfis'.format(contador))
+        except WebDriverException as Erro:
+            os.system('cls') or None
+            print('Ocorreu Um Erro no Processo:\n\n{}'.format(Erro))
+            print('\nVocê Deixou de Seguir {} perfis\n'.format(contador))
 
     elif opcao != '1' or opcao != '2':
             print('Valor Invalido')
