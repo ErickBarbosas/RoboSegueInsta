@@ -44,7 +44,7 @@ def main():
         driver.find_element_by_xpath("//button[text()='Agora não']").click()
 
     def SeguirSeguidores():    
-       
+        global driver
         sleep(3) 
         #Clicando no botao de seguidores no perfil
         driver.find_element_by_xpath("//a[text()=' seguidores']").click()
