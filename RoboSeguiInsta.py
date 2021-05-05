@@ -1,19 +1,32 @@
 from selenium import webdriver
+import selenium as sele
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.keys import Keys
 import os
 from time import sleep
 
+
+
 def main():
+    driver = None
     seguir = 0
     contador = 0
     login = ""
     senha = ""
     links= ""
     valor=[]
-
+    
     
     def LogarUsuario():
+        
+        #login do Instagram
+        login=str(input('Digite seu Login: '))
+        #Senha Do perfil
+        senha=str(input('Digite a Senha do Perfil: '))
+
+        print('Iniciando Processo...')
+        
+        global driver
         driver = webdriver.Chrome(executable_path="C:\Projetos\RoboSeguiInsta\webdriver\chromedriver.exe")
         #Abrindo navegados e entrando no link
         driver.get(links)
@@ -30,6 +43,29 @@ def main():
         #Clicando para nao salvar informacoes no navegador
         driver.find_element_by_xpath("//button[text()='Agora não']").click()
 
+    def SeguirSeguidores():    
+       
+        sleep(3) 
+        #Clicando no botao de seguidores no perfil
+        driver.find_element_by_xpath("//a[text()=' seguidores']").click()
+        #Seguindo
+        try:
+            j = 0
+            for i in range(seguir):
+                sleep(3)
+                driver.find_element_by_xpath("//button[text()='Seguir']").click()
+
+                contador+=1
+                j +=1
+            if j ==5:
+                j=0
+                sleep(70)
+
+        except WebDriverException as Erro:
+            os.system('cls') or None
+            print("Ocorreu Um Erro: \n\n{}".format(Erro))
+        
+        
 
 
     os.system('cls') or None #Limpa Tela
@@ -52,38 +88,10 @@ def main():
         #Quantidades de perfil que deseja seguir
         seguir=int(input('Digite Quantos Perfil Você que Seguir\n'))
         
-        #login do Instagram
-        login=str(input('Digite seu Login: '))
-        #Senha Do perfil
-        senha=str(input('Digite a Senha do Perfil: '))
         LogarUsuario()
+        SeguirSeguidores()
 
-        for i in range(len(links)):
-                
-            os.system('cls') or None #Limpa Tela
-            print('Iniciando Processo...')
-            #WebDriver
            
-            #Clicando no botao de seguidores no perfil
-            driver.find_element_by_xpath("//a[text()=' seguidores']").click()
-
-            try:
-                j = 0
-                for i in range(seguir):
-                    sleep(3)
-                    driver.find_element_by_xpath("//button[text()='Seguir']").click()
-
-                    contador+=1
-                    j +=1
-                if j ==5:
-                    j=0
-                    sleep(70)
-
-            except WebDriverException as Erro:
-                os.system('cls') or None
-                print("Ocorreu Um Erro: \n\n{}".format(Erro))
-        
-        driver.close()
         print('****************************************************')    
         print('*           Fim do Processo (Seguir Perfis)        *')
         print('****************************************************')
