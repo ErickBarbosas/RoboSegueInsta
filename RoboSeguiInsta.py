@@ -9,7 +9,6 @@ from time import sleep
 def main():
     driver = None
     seguir = 0
-    contador = 0
     login = ""
     senha = ""
     links= ""
@@ -47,10 +46,10 @@ def main():
         driver.find_element_by_xpath("//button[text()='Agora não']").click()
         sleep(3) 
 
+
     def SeguirSeguidores():    
         global driver
-        global contador
-        
+        contador = 0
         #Clicando no botao de seguidores no perfil
         driver.find_element_by_xpath("//a[text()=' seguidores']").click()
 
@@ -61,7 +60,7 @@ def main():
                 sleep(3)
                 driver.find_element_by_xpath("//button[text()='Seguir']").click()
                
-               # contador+=1
+                contador+=1
                 j +=1
             if j ==5:
                 j=0
@@ -70,6 +69,8 @@ def main():
         except WebDriverException as Erro:
             os.system('cls') or None
             print("Ocorreu Um Erro: \n\n{}".format(Erro))
+       
+        return contador
    
     def DeixardeSegui():
         try: 
@@ -94,7 +95,7 @@ def main():
         print('*                   Fim do Processo                *')
         print('****************************************************')
         print('****************      Meta: {} Perfis **************'.format(seguir))
-        print('**************** Alcançado: {} Perfis **************'.format(contador))
+        print('**************** Alcançado: {} Perfis **************'.format(SeguirSeguidores()))
         print('****************************************************')
         print('****************************************************\n')
             
@@ -104,7 +105,7 @@ def main():
 
         
 
-
+    #MENU
     os.system('cls') or None #Limpa Tela
     print('**************************************')
     print('*****  Robo Ganhe Seguidores :) ******')
