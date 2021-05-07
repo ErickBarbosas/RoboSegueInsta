@@ -43,6 +43,9 @@ def main():
 
     def SeguirSeguidores():    
         global driver
+        global contador
+        
+
         sleep(3) 
         #Clicando no botao de seguidores no perfil
         driver.find_element_by_xpath("//a[text()=' seguidores']").click()
@@ -52,7 +55,7 @@ def main():
             for i in range(seguir):
                 sleep(3)
                 driver.find_element_by_xpath("//button[text()='Seguir']").click()
-
+               
                 contador+=1
                 j +=1
             if j ==5:
@@ -74,7 +77,7 @@ def main():
                 driver.find_element_by_xpath("//button[text()='Seguindo']").click()
                 sleep(5)
                 driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
-                driver.execute_script("window.scrollTo(0,1000)")
+                global contador
                 contador+=1
         except WebDriverException as Erro:
             os.system('cls') or None
@@ -124,7 +127,7 @@ def main():
     elif opcao == '2':            
         #Digite o link da pagina que deseja seguir os seguidores
         os.system('cls') or None #Limpa Tela 
-        perfis= str(input('Digite os Links do Perfil (Separados Por ;):\n'))
+        links= str(input('Digite os Links do Perfil (Separados Por ;):\n'))
     
         #Quantidades de perfil que deseja seguir
         os.system('cls') or None #Limpa Tela 
