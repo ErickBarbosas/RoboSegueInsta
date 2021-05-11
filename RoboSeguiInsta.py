@@ -58,8 +58,8 @@ def main():
         #Seguindo
         try:
             j = 0
-            for i in range(seguir):
-                sleep(3)
+            for i in range(seguir-1):
+                sleep(5)
                 driver.find_element_by_xpath("//button[text()='Seguir']").click()
                 sleep(3)
                 #cont+=1
@@ -121,7 +121,7 @@ def main():
     opcao = str(input('R: '))
 
     
-    if opcao =='1':
+    if opcao =='1': #Seguir Seguidores
         
         os.system('cls') or None #Limpa Tela 
         #Digite o link da pagina que deseja seguir os seguidores
@@ -133,7 +133,7 @@ def main():
         SeguirSeguidores()
         FimProcesso()
 
-    elif opcao == '2':      
+    elif opcao == '2': #Deixar de seguir
 
         #Digite o link da pagina que deseja seguir os seguidores
         os.system('cls') or None 
