@@ -5,7 +5,6 @@ import os
 from time import sleep
 
 
-
 def main():
     driver = None
     seguir = 0
@@ -14,7 +13,7 @@ def main():
     links= ""
     valor=[]
     
-    
+########################################## ---- FUNCOES ---- #############################################
     def LogarUsuario():
         global driver
 
@@ -104,7 +103,7 @@ def main():
             main()
 
         
-
+#######################################################################################################
     #MENU
     os.system('cls') or None #Limpa Tela
     print('**************************************')
