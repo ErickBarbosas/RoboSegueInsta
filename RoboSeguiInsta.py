@@ -6,14 +6,16 @@ from time import sleep
 
 
 def main():
-    driver = None
+   # driver = None
     seguir = 0
+    contador =0
     login = ""
     senha = ""
     links= ""
-    valor=[]
     
+ 
 ########################################## ---- FUNCOES ---- #############################################
+
     def LogarUsuario():
         global driver
 
@@ -48,7 +50,8 @@ def main():
 
     def SeguirSeguidores():    
         global driver
-        contador = 0
+        cont =0
+       
         #Clicando no botao de seguidores no perfil
         driver.find_element_by_xpath("//a[text()=' seguidores']").click()
 
@@ -58,8 +61,8 @@ def main():
             for i in range(seguir):
                 sleep(3)
                 driver.find_element_by_xpath("//button[text()='Seguir']").click()
-               
-                contador+=1
+                sleep(3)
+                #cont+=1
                 j +=1
             if j ==5:
                 j=0
@@ -68,8 +71,9 @@ def main():
         except WebDriverException as Erro:
             os.system('cls') or None
             print("Ocorreu Um Erro: \n\n{}".format(Erro))
+        
+        #contador=cont
        
-        return contador
    
     def DeixardeSegui():
         try: 
@@ -82,8 +86,8 @@ def main():
                 driver.find_element_by_xpath("//button[text()='Seguindo']").click()
                 sleep(5)
                 driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
-                global contador
-               # contador+=1
+                
+            
         except WebDriverException as Erro:
             os.system('cls') or None
             print('Ocorreu Um Erro no Processo:\n\n{}'.format(Erro))
