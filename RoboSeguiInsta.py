@@ -6,9 +6,9 @@ from time import sleep
 
 
 def main():
-   # driver = None
+    driver = None
     seguir = 0
-    contador =0
+    contador = 0
     login = ""
     senha = ""
     links= ""
@@ -46,15 +46,47 @@ def main():
         #Clicando para nao salvar informacoes no navegador
         driver.find_element_by_xpath("//button[text()='Agora não']").click()
         sleep(3) 
+ 
 
 
-   
+    def SeguirSeguidores():    
+        global driver
+        #count = 0
+       
+        #Clicando no botao de seguidores no perfil
+        driver.find_element_by_xpath("//a[text()=' seguidores']").click()
+        sleep(5)
+       
+        #driver.find_element_by_xpath("//button[text()='Seguir']")
+
+        #Seguindo
+        try:
+            j = 0
+            for i in range(seguir):
+                print('segui:'.format(seguir))
+                sleep(5)
+                driver.find_element_by_xpath("//button[text()='Seguir']")
+                
+                sleep(3)
+
+                #count +=1
+                j +=1
+                if j ==5:
+                    j=0
+                    sleep(70)    
+        except WebDriverException as Erro:
+            #os.system('cls') or None
+            print("Ocorreu Um Erro: \n\n{}".format(Erro))
+        
+        # contador=count
+        
    
     def DeixardeSegui():
         try: 
             global driver
             global contador
-            cout =0
+            count = 0
+            
             #Clicando no botao de seguidores no perfil
             driver.find_element_by_xpath("//a[text()=' seguindo']").click()
 
@@ -62,45 +94,18 @@ def main():
                 sleep(10)
                 driver.find_element_by_xpath("//button[text()='Seguindo']").click()
                 sleep(5)
-                driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
+                driver.find_element_by_xpath("//button[text()='Seguir']")
+                #driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
                 
-                cout+=1
+                count+=1
             
         except WebDriverException as Erro:
-            os.system('cls') or None
+           # os.system('cls') or None
             print('Ocorreu Um Erro no Processo:\n\n{}'.format(Erro))
-        
-        contador=cout
 
-    def SeguirSeguidores():    
-        global driver
-        global contador
-        cont =0
-       
-        #Clicando no botao de seguidores no perfil
-        driver.find_element_by_xpath("//a[text()=' seguidores']").click()
+        contador=count
 
-        #Seguindo
-        try:
-            j = 0
-            for i in range(seguir-1):
-                sleep(5)
-                driver.find_element_by_xpath("//button[text()='Seguir']").click()
-                sleep(3)
-
-                cont+=1
-                j +=1
-            if j ==5:
-                j=0
-                sleep(70)
-
-        except WebDriverException as Erro:
-            os.system('cls') or None
-            print("Ocorreu Um Erro: \n\n{}".format(Erro))
-        
-        contador=cont
-        
-        
+    
        
 
     def FimProcesso():
@@ -156,7 +161,6 @@ def main():
 
         LogarUsuario()
         DeixardeSegui()
-       
         FimProcesso()
 
     elif opcao != '1' or opcao != '2':
