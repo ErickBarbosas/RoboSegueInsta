@@ -52,7 +52,8 @@ def main():
 
     def SeguirSeguidores():    
         global driver
-        #count = 0
+        global contador
+        count = 0
        
         #Clicando no botao de seguidores no perfil
         driver.find_element_by_xpath("//a[text()=' seguidores']").click()
@@ -62,22 +63,19 @@ def main():
         try:
             j = 0
             for i in range(seguir):
-                print('segui:'.format(seguir))
-                sleep(10)
+                sleep(5)
                 driver.find_element_by_xpath("//button[text()='Seguir']").click()
-                
-                sleep(3)
-
-                #count +=1
+               
+                count +=1
                 j +=1
                 if j ==5:
                     j=0
                     sleep(70)    
         except WebDriverException as Erro:
-            #os.system('cls') or None
+            os.system('cls') or None
             print("Ocorreu Um Erro: \n\n{}".format(Erro))
         
-        # contador=count
+        contador=count
         
    
     def DeixardeSegui():
