@@ -1,4 +1,5 @@
 from selenium import webdriver
+import selenium
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.keys import Keys
 import os
@@ -6,7 +7,7 @@ from time import sleep
 
 
 def main():
-    driver = None
+    driver = selenium
     seguir = 0
     contador = 0
     login = ""
@@ -56,16 +57,14 @@ def main():
         #Clicando no botao de seguidores no perfil
         driver.find_element_by_xpath("//a[text()=' seguidores']").click()
         sleep(5)
-       
-        #driver.find_element_by_xpath("//button[text()='Seguir']")
 
         #Seguindo
         try:
             j = 0
             for i in range(seguir):
                 print('segui:'.format(seguir))
-                sleep(5)
-                driver.find_element_by_xpath("//button[text()='Seguir']")
+                sleep(10)
+                driver.find_element_by_xpath("//button[text()='Seguir']").click()
                 
                 sleep(3)
 
@@ -94,13 +93,12 @@ def main():
                 sleep(10)
                 driver.find_element_by_xpath("//button[text()='Seguindo']").click()
                 sleep(5)
-                driver.find_element_by_xpath("//button[text()='Seguir']")
-                #driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
-                
+                driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
+               
                 count+=1
-            
+                
         except WebDriverException as Erro:
-           # os.system('cls') or None
+            os.system('cls') or None
             print('Ocorreu Um Erro no Processo:\n\n{}'.format(Erro))
 
         contador=count
@@ -109,7 +107,7 @@ def main():
        
 
     def FimProcesso():
-
+        global contador
         print('****************************************************')    
         print('*                   Fim do Processo                *')
         print('****************************************************')
@@ -145,6 +143,10 @@ def main():
         #Quantidades de perfil que deseja seguir
         seguir=int(input('Digite Quantos Perfil Você que Seguir\n'))
         
+
+        ########################
+
+       
         LogarUsuario()
         SeguirSeguidores()
         FimProcesso()
