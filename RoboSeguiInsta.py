@@ -53,6 +53,8 @@ def main():
     def DeixardeSegui():
         try: 
             global driver
+            global contador
+            cout =0
             #Clicando no botao de seguidores no perfil
             driver.find_element_by_xpath("//a[text()=' seguindo']").click()
 
@@ -62,13 +64,17 @@ def main():
                 sleep(5)
                 driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
                 
+                cout+=1
             
         except WebDriverException as Erro:
             os.system('cls') or None
             print('Ocorreu Um Erro no Processo:\n\n{}'.format(Erro))
+        
+        contador=cout
 
     def SeguirSeguidores():    
         global driver
+        global contador
         cont =0
        
         #Clicando no botao de seguidores no perfil
@@ -81,7 +87,8 @@ def main():
                 sleep(5)
                 driver.find_element_by_xpath("//button[text()='Seguir']").click()
                 sleep(3)
-               
+
+                cont+=1
                 j +=1
             if j ==5:
                 j=0
@@ -91,7 +98,9 @@ def main():
             os.system('cls') or None
             print("Ocorreu Um Erro: \n\n{}".format(Erro))
         
-        #contador=cont
+        contador=cont
+        
+        
        
 
     def FimProcesso():
@@ -100,7 +109,7 @@ def main():
         print('*                   Fim do Processo                *')
         print('****************************************************')
         print('****************      Meta: {} Perfis **************'.format(seguir))
-        print('**************** Alcançado: {} Perfis **************'.format(SeguirSeguidores()))
+        print('**************** Alcançado: {} Perfis **************'.format(contador))
         print('****************************************************')
         print('****************************************************\n')
             
@@ -147,6 +156,7 @@ def main():
 
         LogarUsuario()
         DeixardeSegui()
+       
         FimProcesso()
 
     elif opcao != '1' or opcao != '2':
