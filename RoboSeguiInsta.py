@@ -32,7 +32,7 @@ def main():
         driver = webdriver.Chrome(executable_path="C:\Projetos\RoboSeguiInsta\webdriver\chromedriver.exe")
         driver.get(links)
         sleep(3)
-
+        
         #Clicando no botao de login
         driver.find_element_by_css_selector("button[type='button']").click()
         sleep(1)
@@ -49,7 +49,6 @@ def main():
         driver.find_element_by_xpath("//button[text()='Agora não']").click()
         sleep(3) 
  
-
 
     def SeguirSeguidores():    
         global driver
@@ -143,7 +142,7 @@ def main():
         LogarUsuario()
         SeguirSeguidores()
         FimProcesso()
-
+        
     elif opcao == '2': #Deixar de seguir
 
         #Digite o link da pagina que deseja seguir os seguidores
