@@ -7,6 +7,7 @@ from time import sleep
 
 
 def main():
+    #Variaveis
     driver = selenium
     seguir = 0
     contador = 0
@@ -100,9 +101,7 @@ def main():
             print('Ocorreu Um Erro no Processo:\n\n{}'.format(Erro))
 
         contador=count
-
-    
-       
+   
 
     def FimProcesso():
         global contador
@@ -119,7 +118,8 @@ def main():
             main()
 
         
-#######################################################################################################
+######################################### Fim Funções #################################################
+    
     #MENU
     os.system('cls') or None #Limpa Tela
     print('**************************************')
@@ -132,7 +132,6 @@ def main():
 
     opcao = str(input('R: '))
 
-    
     if opcao =='1': #Seguir Seguidores
         
         os.system('cls') or None #Limpa Tela 
@@ -140,11 +139,7 @@ def main():
         links= str(input('Digite os Links do Perfil (Separados Por ;):\n'))
         #Quantidades de perfil que deseja seguir
         seguir=int(input('Digite Quantos Perfil Você que Seguir\n'))
-        
 
-        ########################
-
-       
         LogarUsuario()
         SeguirSeguidores()
         FimProcesso()
