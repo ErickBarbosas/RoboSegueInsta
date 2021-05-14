@@ -108,7 +108,7 @@ def main():
         global contador
         global driver
 
-        driver.close #Fechar Page 
+        driver.quit() #Fechar Page 
         print('****************************************************')    
         print('*                   Fim do Processo                *')
         print('****************************************************')
