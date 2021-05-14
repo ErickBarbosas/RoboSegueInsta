@@ -30,7 +30,9 @@ def main():
         os.system('cls') or None
         print('Iniciando Processo...')        
         driver = webdriver.Chrome(executable_path="C:\Projetos\RoboSeguiInsta\webdriver\chromedriver.exe")
-        driver.get(links)
+        driver.maximize_window() #Maximizar Page
+        driver.get(links) #Abrir Link
+        
         sleep(3)
         
         #Clicando no botao de login
@@ -58,7 +60,7 @@ def main():
         #Clicando no botao de seguidores no perfil
         driver.find_element_by_xpath("//a[text()=' seguidores']").click()
         sleep(5)
-
+        
         #Seguindo
         try:
             j = 0
@@ -88,9 +90,9 @@ def main():
             driver.find_element_by_xpath("//a[text()=' seguindo']").click()
 
             for j in range(seguir):
-                sleep(10)
-                driver.find_element_by_xpath("//button[text()='Seguindo']").click()
                 sleep(5)
+                driver.find_element_by_xpath("//button[text()='Seguindo']").click()
+                sleep(2)
                 driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
                
                 count+=1
@@ -104,6 +106,9 @@ def main():
 
     def FimProcesso():
         global contador
+        global driver
+
+        driver.close #Fechar Page 
         print('****************************************************')    
         print('*                   Fim do Processo                *')
         print('****************************************************')
