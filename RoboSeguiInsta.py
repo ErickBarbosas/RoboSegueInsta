@@ -1,4 +1,4 @@
-from logging import error
+
 from selenium import webdriver
 import selenium
 from selenium.common.exceptions import WebDriverException
@@ -61,6 +61,7 @@ def main():
     def SeguirSeguidores():    
         global driver
         global contador
+        action = webdriver.ActionChains(driver)
         count = 0
         try:
             #Clicando no botao de seguidores no perfil
@@ -73,7 +74,12 @@ def main():
             for i in range(seguir):
                 sleep(5)
                 driver.find_element_by_xpath("//button[text()='Seguir']").click()
-               
+
+                action.send_keys(Keys.TAB).perform()
+                action.send_keys(Keys.TAB).perform()
+                action.send_keys(Keys.TAB).perform()
+                                
+                
                 count +=1
                 j +=1
                 if j ==5:
@@ -96,9 +102,6 @@ def main():
             #Clicando no botao de seguidores no perfil
             driver.find_element_by_xpath("//a[text()=' seguindo']").click()
             sleep(3)
-            
-            driver.execute_script("window.scrollBy(0,20)")
-            sleep(1)
 
             for j in range(seguir):
                 sleep(5)
