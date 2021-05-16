@@ -86,9 +86,12 @@ def main():
             global contador
             count = 0
             
+            driver.execute_script("window.scrollBy(0,20)")
+            sleep(10)
             #Clicando no botao de seguidores no perfil
             driver.find_element_by_xpath("//a[text()=' seguindo']").click()
-
+           
+            
             for j in range(seguir):
                 sleep(5)
                 driver.find_element_by_xpath("//button[text()='Seguindo']").click()
@@ -122,7 +125,7 @@ def main():
             main()
 
         
-######################################### Fim Funções #################################################
+#########################################--Fim Funções--#################################################
     
     #MENU
     os.system('cls') or None #Limpa Tela
