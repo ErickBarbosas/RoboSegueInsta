@@ -61,7 +61,7 @@ def main():
     def SeguirSeguidores():    
         global driver
         global contador
-        action = webdriver.ActionChains(driver)
+        
         count = 0
         try:
             #Clicando no botao de seguidores no perfil
@@ -69,20 +69,14 @@ def main():
             sleep(5)
             
             #Seguindo
-        
             j = 0
             for i in range(seguir):
-                sleep(5)
                 driver.find_element_by_xpath("//button[text()='Seguir']").click()
-
-                action.send_keys(Keys.TAB).perform()
-                action.send_keys(Keys.TAB).perform()
-                action.send_keys(Keys.TAB).perform()
-                                
-                
+                sleep(3)
                 count +=1
                 j +=1
                 if j ==5:
+                    DescerBarraRolagem()
                     j=0
                     sleep(70)    
         except WebDriverException as Erro:
@@ -102,14 +96,18 @@ def main():
             #Clicando no botao de seguidores no perfil
             driver.find_element_by_xpath("//a[text()=' seguindo']").click()
             sleep(3)
-
+            j=0
             for j in range(seguir):
                 sleep(5)
                 driver.find_element_by_xpath("//button[text()='Seguindo']").click()
                 sleep(2)
                 driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
-               
                 count+=1
+                j +=1
+                if j ==5:
+                    DescerBarraRolagem()
+                    j=0
+                    sleep(70)    
                 
         except WebDriverException as Erro:
             driver.quit()
@@ -118,6 +116,15 @@ def main():
 
         contador=count
    
+    def DescerBarraRolagem():
+        global driver
+        action = webdriver.ActionChains(driver)
+
+        for i in range(4):
+            action.send_keys(Keys.TAB).perform()
+
+        for j in range(5):
+            action.send_keys(Keys.DOWN).perform()
 
     def FimProcesso():
         global contador
