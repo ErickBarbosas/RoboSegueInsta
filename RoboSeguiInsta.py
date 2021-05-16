@@ -15,8 +15,7 @@ def main():
     login = ""
     senha = ""
     links= ""
-    
- 
+     
 ########################################## ---- FUNCOES ---- #############################################
 
     def LogarUsuario():
@@ -34,8 +33,7 @@ def main():
             driver.maximize_window() #Maximizar Page
             driver.get(links) #Abrir Link
             
-            sleep(3)
-            
+            sleep(3)    
             #Clicando no botao de login
             driver.find_element_by_css_selector("button[type='button']").click()
             sleep(1)
@@ -55,8 +53,6 @@ def main():
             driver.quit()
             os.system('cls') or None
             print('Ocorreu Um Erro no Processo:\n\n{}'.format(Erro))
-
- 
 
     def SeguirSeguidores():    
         global driver
@@ -84,8 +80,7 @@ def main():
             os.system('cls') or None
             print("Ocorreu Um Erro: \n\n{}".format(Erro))
         
-        contador=count
-        
+        contador=count    
    
     def DeixardeSegui():
         try: 
@@ -116,7 +111,7 @@ def main():
 
         contador=count
    
-    def DescerBarraRolagem():
+    def DescerBarraRolagem():#Função responsavel por descer a barra de rolagem
         global driver
         action = webdriver.ActionChains(driver)
 
