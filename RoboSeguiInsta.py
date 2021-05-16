@@ -95,19 +95,19 @@ def main():
 
             #Clicando no botao de seguidores no perfil
             driver.find_element_by_xpath("//a[text()=' seguindo']").click()
-            sleep(3)
+            sleep(5)
             j=0
             for j in range(seguir):
-                sleep(5)
                 driver.find_element_by_xpath("//button[text()='Seguindo']").click()
                 sleep(2)
                 driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
+                sleep(4)
                 count+=1
-                j +=1
+                j+=1
                 if j ==5:
                     DescerBarraRolagem()
                     j=0
-                    sleep(70)    
+                    sleep(5)    
                 
         except WebDriverException as Erro:
             driver.quit()
