@@ -6,7 +6,6 @@ from selenium.webdriver.common.keys import Keys
 import os
 from time import sleep
 
-
 def main():
     #Variaveis
     driver = selenium
@@ -66,9 +65,9 @@ def main():
             
             #Seguindo
             j = 0
-            for i in range(seguir):
+            for b in range(seguir):
                 driver.find_element_by_xpath("//button[text()='Seguir']").click()
-                sleep(3)
+                sleep(5)
                 count +=1
                 j +=1
                 if j ==5:
@@ -92,17 +91,17 @@ def main():
             driver.find_element_by_xpath("//a[text()=' seguindo']").click()
             sleep(5)
             j=0
-            for j in range(seguir):
+            for c in range(seguir):
                 driver.find_element_by_xpath("//button[text()='Seguindo']").click()
                 sleep(2)
                 driver.find_element_by_xpath("//button[text()='Deixar de seguir']").click()
-                sleep(4)
+                sleep(5)
                 count+=1
                 j+=1
                 if j ==5:
                     DescerBarraRolagem()
                     j=0
-                    sleep(5)    
+                    sleep(60)    
                 
         except WebDriverException as Erro:
             driver.quit()
@@ -118,7 +117,7 @@ def main():
         for i in range(4):
             action.send_keys(Keys.TAB).perform()
 
-        for j in range(5):
+        for j in range(6):
             action.send_keys(Keys.DOWN).perform()
 
     def FimProcesso():
